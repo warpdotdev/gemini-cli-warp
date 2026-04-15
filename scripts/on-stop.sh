@@ -39,3 +39,6 @@ BODY=$(build_payload "$INPUT" "stop" \
     --arg transcript_path "$TRANSCRIPT_PATH")
 
 "$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
+
+# Output empty JSON so we don't interfere with the agent
+echo '{}'

@@ -56,17 +56,6 @@ The extension registers five hooks:
 - **BeforeAgent** — fires when you submit a prompt, signaling the session is active again
 - **AfterTool** — fires when a tool call completes, signaling the session is no longer blocked
 
-### Hook Mapping from Claude Code
-
-| Claude Code Hook | Gemini CLI Hook | Notes |
-|---|---|---|
-| `SessionStart` | `SessionStart` | Direct mapping |
-| `Stop` | `AfterAgent` | Gemini provides `prompt` and `prompt_response` directly — no transcript parsing needed |
-| `Notification` (idle_prompt) | `Notification` (catch-all) | Dispatches on `notification_type` |
-| `PermissionRequest` | `Notification` (`ToolPermission`) | Gemini merges this into the Notification event |
-| `UserPromptSubmit` | `BeforeAgent` | Same semantics, different name |
-| `PostToolUse` | `AfterTool` | Same semantics, different name |
-
 ## Configuration
 
 Notifications work out of the box. To customize Warp's notification behavior (sounds, system notifications, etc.), see [Warp's notification settings](https://docs.warp.dev/features/notifications).
